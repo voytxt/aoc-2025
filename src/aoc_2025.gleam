@@ -1,11 +1,11 @@
-import day01_2
+import day02_2
 import gleam/io
 import simplifile
 
 pub fn main() -> Nil {
-  let assert Ok(input) = simplifile.read("input.txt")
+  let assert Ok(input) = simplifile.read("input/day02.txt")
 
-  input |> day01_2.main |> io.println
+  input |> day02_2.main |> io.println
 
   Nil
 }
