@@ -39,18 +39,19 @@ fn combine_ranges(ranges: List(Range)) -> Interval {
 }
 
 fn add_new_range(interval: Interval, range: Range) -> Interval {
-  // the range is completely enclosed in our interval already, we can discard it
-  // this check is actually redundant as well, but whatever
+  // first, we check if the range is either redundant, or completely new
+  // both of these checks are redundant, and this would work fine without them
+
+  // if the range is completely enclosed in our interval already, we discard it
   use <- bool.guard(when: is_range_redundant(interval, range), return: interval)
 
-  // this range is completely new, meaning that it doesn't overlap
-  // with anything, so we can just add it
+  // if this range is completely new (it doesn't overlap with anything), we save it
   use <- bool.guard(
     when: is_range_completely_new(interval, range),
     return: Interval(ranges: [range, ..interval.ranges]),
   )
 
-  // this range overlaps with our interval, so we need to combine them all into a single one
+  // now we know that this range is 100% overlapping with at least one other range in our interval!
 
   // 1. remove all overlapping ranges from the interval
   let #(interval, overlapping_ranges) = {
@@ -60,11 +61,11 @@ fn add_new_range(interval: Interval, range: Range) -> Interval {
   // 2. combine all of these ranges into a single range
   let range = [range, ..overlapping_ranges] |> combine_overlapping_ranges
 
-  // 3. add the final range back to the interval
+  // 3. re-add the combined range
   Interval(ranges: [range, ..interval.ranges])
 }
 
-/// Returns true if at least one range in the interval completely covers our range,
+/// Returns true if at least one range in the interval completely covers our range.
 ///
 /// i: x--------x
 /// r:   x---x
@@ -74,7 +75,7 @@ fn is_range_redundant(interval: Interval, r: Range) -> Bool {
   })
 }
 
-/// Returns true if none of the numbers from our range are within the interval,
+/// Returns true if none of the numbers from our range are within the interval.
 ///
 /// i: x---x
 /// r:        x----x
