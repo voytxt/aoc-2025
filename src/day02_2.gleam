@@ -28,7 +28,7 @@ fn is_valid(id: Int) -> Bool {
 
   use <- bool.guard(when: length == 1, return: True)
 
-  let id: List(String) = id |> string.split("")
+  let id: List(String) = id |> string.to_graphemes
 
   // go though all possible sequence lengths
   list.all(list.range(1, length / 2), fn(sequence_length) {

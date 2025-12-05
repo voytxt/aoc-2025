@@ -20,7 +20,7 @@ fn parse_input(input: String) -> List(Bank) {
   |> string.split("\n")
   |> list.map(fn(bank) {
     bank
-    |> string.split("")
+    |> string.to_graphemes
     |> list.map(u.int)
     |> Bank
   })
