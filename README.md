@@ -16,3 +16,7 @@
 | 10  |                                                     |
 | 11  |                                                     |
 | 12  |                                                     |
+
+## Input
+
+The program expects you to put your input files into `input/dayXX.txt`, so for example the inputs for day 4 should be in `input/day04.txt`. Note that the file should not have a trailing newline.
