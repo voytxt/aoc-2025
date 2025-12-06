@@ -6,34 +6,35 @@ import u
 
 pub fn main(input: String) -> String {
   input
-  |> string.split(",")
-  |> list.fold(from: 0, with: fn(gacc, range) {
-    let assert Ok(#(from, to)) = range |> string.split_once("-")
+  |> string.split(on: ",")
+  |> list.fold(from: 0, with: fn(sum, range) {
+    let assert Ok(#(from, to)) = range |> string.split_once(on: "-")
 
     list.range(from |> u.int, to |> u.int)
     |> list.fold(from: 0, with: fn(acc, id) {
-      case id |> is_valid {
-        False -> acc + id
-        True -> acc
+      use <- bool.guard(when: id < 10, return: acc)
+
+      let id_string = id |> int.to_string
+      let length = id_string |> string.byte_size
+
+      let is_invalid = {
+        list.range(from: 1, to: length / 2)
+        |> list.any(satisfying: fn(sequence_length) {
+          use <- bool.guard(when: length % sequence_length != 0, return: False)
+
+          id_string
+          |> string.slice(at_index: 0, length: sequence_length)
+          |> string.repeat(times: length / sequence_length)
+          == id_string
+        })
+      }
+
+      case is_invalid {
+        True -> acc + id
+        False -> acc
       }
     })
-    |> int.add(gacc)
+    |> int.add(sum)
   })
   |> int.to_string
-}
-
-fn is_valid(id: Int) -> Bool {
-  let id = id |> int.to_string
-  let length = id |> string.length
-
-  use <- bool.guard(when: length == 1, return: True)
-
-  let id: List(String) = id |> string.to_graphemes
-
-  // go though all possible sequence lengths
-  list.all(list.range(1, length / 2), fn(sequence_length) {
-    let assert [first, ..rest] = id |> list.sized_chunk(into: sequence_length)
-
-    rest |> list.any(fn(x) { x != first })
-  })
 }
