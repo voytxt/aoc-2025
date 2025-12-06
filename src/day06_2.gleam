@@ -1,6 +1,5 @@
 import gleam/int
 import gleam/list
-import gleam/result
 import gleam/string
 import u
 
@@ -15,7 +14,7 @@ pub fn main(input: String) -> String {
         _ -> panic
       }
     })
-    |> result.lazy_unwrap(fn() { panic })
+    |> u.ok
   })
   |> list.fold(from: 0, with: int.add)
   |> int.to_string

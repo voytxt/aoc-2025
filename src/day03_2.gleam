@@ -1,7 +1,6 @@
 import gleam/bool
 import gleam/int
 import gleam/list
-import gleam/result
 import gleam/string
 import u
 
@@ -50,7 +49,7 @@ fn find_largest_dozen_loop(bank: Bank, dozen: List(Int)) -> Int {
   let largest_battery: Int =
     batteries_to_pick_from
     |> list.max(with: int.compare)
-    |> result.lazy_unwrap(fn() { panic })
+    |> u.ok
 
   let assert #(_, [picked_battery, ..batteries_left]) =
     batteries_to_pick_from

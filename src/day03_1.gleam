@@ -1,6 +1,5 @@
 import gleam/int
 import gleam/list
-import gleam/result
 import gleam/string
 import u
 
@@ -31,5 +30,5 @@ fn find_largest_pair(bank: Bank) -> Int {
   |> list.combination_pairs
   |> list.map(fn(pair) { pair.0 * 10 + pair.1 })
   |> list.max(with: int.compare)
-  |> result.lazy_unwrap(fn() { panic })
+  |> u.ok
 }
