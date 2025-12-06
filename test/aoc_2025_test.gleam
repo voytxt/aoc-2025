@@ -5,6 +5,7 @@ import day02_2
 import day03_1
 import day03_2
 import day04_1
+import day04_2
 import day05_1
 import day05_2
 import day06_1
@@ -37,7 +38,7 @@ pub fn day03_test() {
 pub fn day04_test() {
   let assert Ok(input) = simplifile.read("input/day04.txt")
   assert input |> day04_1.main == "1449"
-  // assert input |> day04_2.main == "8746"
+  assert input |> day04_2.main == "8746"
 }
 
 pub fn day05_test() {
