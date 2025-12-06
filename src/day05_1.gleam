@@ -17,19 +17,21 @@ pub fn main(input: String) -> String {
 }
 
 fn parse_input(input: String) -> #(List(Range), List(Int)) {
-  let lines = input |> string.split("\n")
+  let assert Ok(#(ranges, ingredients)) = input |> string.split_once(on: "\n\n")
 
-  let assert #(ranges, [_empty_line, ..ingredients]) =
-    lines |> list.split_while(fn(x) { x != "" })
-
-  let ranges: List(Range) =
-    list.map(ranges, fn(range: String) {
+  let ranges: List(Range) = {
+    ranges
+    |> string.split(on: "\n")
+    |> list.map(fn(range: String) {
       let assert Ok(#(from, to)) = range |> string.split_once(on: "-")
 
       Range(from: from |> u.int, to: to |> u.int)
     })
+  }
 
-  let ingredients: List(Int) = ingredients |> list.map(u.int)
+  let ingredients: List(Int) = {
+    ingredients |> string.split(on: "\n") |> list.map(u.int)
+  }
 
   #(ranges, ingredients)
 }
