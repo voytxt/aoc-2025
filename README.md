@@ -10,7 +10,7 @@
 |  4  | [✅](./src/day04_1.gleam) [✅](./src/day04_2.gleam) |
 |  5  | [✅](./src/day05_1.gleam) [✅](./src/day05_2.gleam) |
 |  6  | [✅](./src/day06_1.gleam) [✅](./src/day06_2.gleam) |
-|  7  |                                                     |
+|  7  | [✅](./src/day07_1.gleam) [✅](./src/day07_2.gleam) |
 |  8  |                                                     |
 |  9  |                                                     |
 | 10  |                                                     |

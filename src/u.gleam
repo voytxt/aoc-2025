@@ -1,4 +1,5 @@
 import gleam/int
+import gleam/list
 import gleam/set.{type Set}
 import gleam/string
 
@@ -34,3 +35,10 @@ pub fn ok(result: Result(a, b)) -> a {
     Error(_) -> panic as { "Failed to unwrap " <> result |> string.inspect }
   }
 }
+
+pub fn index_of(list: List(a), a: a) -> Int {
+  list |> list.index_map(fn(x, i) { #(x, i) }) |> list.key_find(a) |> ok
+}
+// pub fn indexes_of(list: List(a), a: a) -> List(Int) {
+//   list |> list.index_map(fn(x, i) { #(x, i) }) |> list.key_filter(a)
+// }
