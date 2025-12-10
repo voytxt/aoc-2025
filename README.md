@@ -13,7 +13,7 @@
 |  7  | [✅](./src/day07_1.gleam) [✅](./src/day07_2.gleam) |
 |  8  |                                                     |
 |  9  | [✅](./src/day09_1.gleam) [✅](./src/day09_2.gleam) |
-| 10  |                                                     |
+| 10  | [✅](./src/day10_1.gleam)                           |
 | 11  |                                                     |
 | 12  |                                                     |
 
