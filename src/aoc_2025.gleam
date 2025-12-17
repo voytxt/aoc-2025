@@ -1,11 +1,11 @@
-import day10_1
+import day11_2
 import gleam/io
 import simplifile
 import u
 
 pub fn main() -> Nil {
-  simplifile.read("input/day10.txt")
+  simplifile.read("input/day11.txt")
   |> u.ok
-  |> day10_1.main
+  |> day11_2.main
   |> io.println
 }

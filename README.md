@@ -14,7 +14,7 @@
 |  8  |                                                     |
 |  9  | [✅](./src/day09_1.gleam) [✅](./src/day09_2.gleam) |
 | 10  | [✅](./src/day10_1.gleam)                           |
-| 11  |                                                     |
+| 11  | [✅](./src/day11_1.gleam) [✅](./src/day11_2.gleam) |
 | 12  |                                                     |
 
 ## Input
