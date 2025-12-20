@@ -7,16 +7,13 @@ pub fn main(input: String) -> String {
   let #(operands, nums) = input |> parse_input
 
   list.map2(operands, nums, with: fn(operand, nums) {
-    list.reduce(nums, with: fn(acc, num) {
-      case operand {
-        "+" -> acc + num
-        "*" -> acc * num
-        _ -> panic
-      }
-    })
-    |> u.ok
+    case operand {
+      "+" -> nums |> int.sum
+      "*" -> nums |> int.product
+      _ -> panic as "Unknown operand."
+    }
   })
-  |> list.fold(from: 0, with: int.add)
+  |> int.sum
   |> int.to_string
 }
 

@@ -24,7 +24,7 @@ pub fn main(input: String) -> String {
   input
   |> parse_input
   |> list.map(solve_machine)
-  |> list.fold(from: 0, with: int.add)
+  |> int.sum
   |> int.to_string
 }
 
