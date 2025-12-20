@@ -39,6 +39,29 @@ pub fn ok(result: Result(a, b)) -> a {
 pub fn index_of(list: List(a), a: a) -> Int {
   list |> list.index_map(fn(x, i) { #(x, i) }) |> list.key_find(a) |> ok
 }
+
 // pub fn indexes_of(list: List(a), a: a) -> List(Int) {
 //   list |> list.index_map(fn(x, i) { #(x, i) }) |> list.key_filter(a)
 // }
+
+/// Runs a callback on `a` from `Result(a, Nil)`.
+///
+/// ## Examples
+///
+/// ```gleam
+/// let input: Result(Int, Nil) = Ok(5)
+/// use num <- return_on_error(input, "no number")
+/// "you picked " <> num
+/// ...
+/// // -> "you picked 5"
+/// ```
+pub fn return_on_error(
+  result: Result(a, Nil),
+  return on_error: b,
+  otherwise on_ok: fn(a) -> b,
+) -> b {
+  case result {
+    Ok(a) -> on_ok(a)
+    Error(Nil) -> on_error
+  }
+}

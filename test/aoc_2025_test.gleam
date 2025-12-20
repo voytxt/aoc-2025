@@ -12,11 +12,14 @@ import day06_1
 import day06_2
 import day07_1
 import day07_2
+import day08_1
+import day08_2
 import day09_1
 import day09_2
 import day10_1
 import day11_1
 import day11_2
+import day12_1
 import gleeunit
 import simplifile
 
@@ -66,6 +69,12 @@ pub fn day07_test() {
   assert input |> day07_2.main == "8632253783011"
 }
 
+pub fn day08_test() {
+  let assert Ok(input) = simplifile.read("input/day08.txt")
+  assert input |> day08_1.main == "97384"
+  assert input |> day08_2.main == "9003685096"
+}
+
 pub fn day09_test() {
   let assert Ok(input) = simplifile.read("input/day09.txt")
   assert input |> day09_1.main == "4765757080"
@@ -82,4 +91,9 @@ pub fn day11_test() {
   let assert Ok(input) = simplifile.read("input/day11.txt")
   assert input |> day11_1.main == "466"
   assert input |> day11_2.main == "549705036748518"
+}
+
+pub fn day12_test() {
+  let assert Ok(input) = simplifile.read("input/day12.txt")
+  assert input |> day12_1.main == "427"
 }
