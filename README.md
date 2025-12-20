@@ -1,22 +1,39 @@
-# Advent of Code 2025 in Gleam
+# Advent of Code in Gleam
 
-## Table (emojis are links to files)
+## Solved problems
 
-|     | 2025 <br/> 22/24                                    |
-| :-: | --------------------------------------------------- |
-|  1  | [✅](./src/day01_1.gleam) [✅](./src/day01_2.gleam) |
-|  2  | [✅](./src/day02_1.gleam) [✅](./src/day02_2.gleam) |
-|  3  | [✅](./src/day03_1.gleam) [✅](./src/day03_2.gleam) |
-|  4  | [✅](./src/day04_1.gleam) [✅](./src/day04_2.gleam) |
-|  5  | [✅](./src/day05_1.gleam) [✅](./src/day05_2.gleam) |
-|  6  | [✅](./src/day06_1.gleam) [✅](./src/day06_2.gleam) |
-|  7  | [✅](./src/day07_1.gleam) [✅](./src/day07_2.gleam) |
-|  8  | [✅](./src/day08_1.gleam) [✅](./src/day08_2.gleam) |
-|  9  | [✅](./src/day09_1.gleam) [✅](./src/day09_2.gleam) |
-| 10  | [✅](./src/day10_1.gleam)                           |
-| 11  | [✅](./src/day11_1.gleam) [✅](./src/day11_2.gleam) |
-| 12  | [✅](./src/day12_1.gleam)                           |
+Click on the ✅s to view the code for each day!
 
-## Input
+|     | 2025                                                                  |
+| :-: | --------------------------------------------------------------------- |
+|  1  | [✅](./src/aoc_2025/day01_1.gleam) [✅](./src/aoc_2025/day01_2.gleam) |
+|  2  | [✅](./src/aoc_2025/day02_1.gleam) [✅](./src/aoc_2025/day02_2.gleam) |
+|  3  | [✅](./src/aoc_2025/day03_1.gleam) [✅](./src/aoc_2025/day03_2.gleam) |
+|  4  | [✅](./src/aoc_2025/day04_1.gleam) [✅](./src/aoc_2025/day04_2.gleam) |
+|  5  | [✅](./src/aoc_2025/day05_1.gleam) [✅](./src/aoc_2025/day05_2.gleam) |
+|  6  | [✅](./src/aoc_2025/day06_1.gleam) [✅](./src/aoc_2025/day06_2.gleam) |
+|  7  | [✅](./src/aoc_2025/day07_1.gleam) [✅](./src/aoc_2025/day07_2.gleam) |
+|  8  | [✅](./src/aoc_2025/day08_1.gleam) [✅](./src/aoc_2025/day08_2.gleam) |
+|  9  | [✅](./src/aoc_2025/day09_1.gleam) [✅](./src/aoc_2025/day09_2.gleam) |
+| 10  | [✅](./src/aoc_2025/day10_1.gleam)                                    |
+| 11  | [✅](./src/aoc_2025/day11_1.gleam) [✅](./src/aoc_2025/day11_2.gleam) |
+| 12  | [✅](./src/aoc_2025/day12_1.gleam)                                    |
 
-The program expects you to put your input files into `input/dayXX.txt`, so for example the inputs for day 4 should be in `input/day04.txt`. Note that the file should not have a trailing newline.
+## Running
+
+First create `src/aoc.gleam` to run a specific day and then run `gleam run`. This is for example how I would run day 11 part 2:
+
+```gleam
+import aoc_2025/day11_2
+import gleam/io
+import simplifile
+import u
+
+pub fn main() -> Nil {
+  "input/day11.txt"
+  |> simplifile.read
+  |> u.ok
+  |> day11_2.main
+  |> io.println
+}
+```
